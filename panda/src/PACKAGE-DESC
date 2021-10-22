@@ -2,7 +2,7 @@ Quick descriptions of the packages:
 
 audio -
     Audio API for panda
-builder - 
+builder -
     A tool to create Geoms and GeomNodes from a pile of unconnected
     triangles or polygons.  It separates geometry according to state
     (texturing, normals, etc.), discovers connections where they exist
@@ -13,7 +13,7 @@ chan -
     which binds to the channels and plays the animation.  This is a
     support library for char, as well as any other libraries that want
     to define objects whose values change over time.
-chancfg - 
+chancfg -
     This package contains the code for the 'channel configuration' system.
     This is responsible for asking for a window to be opened, possibly binding
     'pipe video' channels to it, and dividing it up into Display Regions.
@@ -28,10 +28,10 @@ configfiles -
     things like attach, and emacs.
 cull -
     This package contains the Cull Traverser.  The cull traversal collects all
-    state changes specified, and removes unneccesary state change requests.  Also
+    state changes specified, and removes unnecessary state change requests.  Also
     does all the depth sorting for proper alphaing.
 device -
-    Device drivers, such as mouse and keyboard, trackers, etc...  The 
+    Device drivers, such as mouse and keyboard, trackers, etc...  The
     base class for using various device APIs is here.
 dgraph -
     Defines and manages the data graph, which is the hierarchy of
@@ -44,7 +44,7 @@ doc -
     Documentation that doesn't fit in any of the packages
 downloader -
     Tool to allow automatic download of files in the background
-dxgsg - 
+dxgsg -
     Handles all communication with the DirectX backend, and manages state
     to minimize redundant state changes.
 effects -
@@ -133,7 +133,7 @@ pandagl -
     rendering on an OpenGL platform, with the exception of Glut.
 pandaglut -
     As above, for the OpenGL Glut libraries.
-pandaphysics - 
+pandaphysics -
     As above, for the physics/particle systems libraries.
 pandarib -
     As above, for the Renderman non-realtime renderer.
@@ -164,10 +164,10 @@ ribgsg -
     render the scene offline.
 sgattrib -
     Scene graph attributes and transitions (state information)
-sgidisplay - 
+sgidisplay -
     This package contains the code to manage pipes/windows/channels on SGI
     hardware.
-sgiglutdisplay - 
+sgiglutdisplay -
     This package contains the code to manage pipes/windows/channels on SGI
     hardware for GLUT
 sgiglxdisplay -
@@ -187,13 +187,13 @@ shader -
 stats - (defunct)
     Package for gathering performance stats
 statsdisplay - (defunct)
-    Package for remotely displaying the perfomance stats on a running program
+    Package for remotely displaying the performance stats on a running program
 switchnode -
     Package of nodes that switch out geometry underneath them based on
     various conditions.
 testbed -
     C test programs, that primarily link with framework.
-text - 
+text -
     Package for generating renderable text using textured polygons.
 tform -
     Data transforming objects that live in the data graph and convert
@@ -204,7 +204,7 @@ tiff -
 util -
     This package contains all the little fiddley things that are atomic to
     just about all the code.  Things like: config, ref count, notify, etc.
-vrpn - 
+vrpn -
     Defines the specific client code for interfacing to the VRPN API.
 wdxdisplay -
     Windows DirectX specific display classes
