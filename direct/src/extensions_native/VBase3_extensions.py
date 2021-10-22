@@ -8,7 +8,7 @@ import warnings
 
 def pPrintValues(self):
     """
-    Pretty print
+    Pretty print the components in the vector.
     """
     return "% 10.4f, % 10.4f, % 10.4f" % (self[0], self[1], self[2])
 Dtool_funcToMethod(pPrintValues, VBase3)

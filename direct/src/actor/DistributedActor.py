@@ -17,7 +17,9 @@ class DistributedActor(DistributedNode.DistributedNode, Actor.Actor):
             self.setCacheable(1)
 
     def disable(self):
-        # remove all anims, on all parts and all lods
+        """
+        Remove all anims on all parts and all LODs of the Actor.
+        """
         if not self.isEmpty():
             Actor.Actor.unloadAnims(self, None, None, None)
         DistributedNode.DistributedNode.disable(self)
