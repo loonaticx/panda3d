@@ -526,7 +526,7 @@ all, regardless of trust level, use ConfigFlags::F_closed.
 
 
 This feature is not enabled by default.  It is somewhat complicated to
-enable this feature, because doing so requres generating one or more
+enable this feature, because doing so requires generating one or more
 private/public key pairs, and compiling the public keys into the
 low-level Panda system so that it can recognize signed prc files when
 they are provided, and compiling the private keys into standalone
@@ -623,7 +623,7 @@ To enable this feature, follow the following procedure.
 (7) Set up a Sources.pp file in your private key directory to compile
     the files named by -b against dtool.  It should contain an entry
     something like these for each trust level:
-    
+
     #begin bin_target
       #define OTHER_LIBS dtool
       #define USE_PACKAGES ssl

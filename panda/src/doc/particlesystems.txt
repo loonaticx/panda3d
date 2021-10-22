@@ -37,7 +37,7 @@ PointParticleRenderer- Renderer for drawing particles as point primitives.
 GeomParticleRenderer- Renderer for drawing particles as geometric instances
                       in the scene graph
 
-SparkleParticleRenderer- Renderer for drawing particles as sparkles 
+SparkleParticleRenderer- Renderer for drawing particles as sparkles
                          (axial lines, looking better than they sound).
 
 SpriteParticleRenderer- Renderer for drawing particles as sprites
@@ -60,7 +60,7 @@ BaseParticleFactory- pure virtual abstract base class for the pluggable
 
 PointParticleFactory- factory for point particles (orientation-independent)
 
-OrientedParticleFactory- factory for oriented particles (angular 
+OrientedParticleFactory- factory for oriented particles (angular
                          velocity and orientation)
 
 ----------------------------------------------------------------------
@@ -82,7 +82,7 @@ them properly into the scene graph.
 All of these are reference-counted, so it's ok to assign and forget.
 
 Particle systems REALLY should be attached to a ParticleSystemManager.
-The ParticleSystem/ParticleSystemManager setup is analagous to the 
+The ParticleSystem/ParticleSystemManager setup is analogous to the
 Physical/PhysicsManager setup with the exception of the fact that there
 really isn't a need (as far as i've seen, anyway) to have more than one
 ParticleSystemManager at all.  Simply attach all of your systems to the
@@ -98,7 +98,7 @@ to have assigned to it a birth parent node and a render parent node.
 
 The birth parent node, accessed with set/get_birth_node, is the node that
 the system looks to when transforming a newly-born particle into world-space.
-If I wanted to attach a particle system to jafar's hands or herc's head, for
+If I wanted to attach a particle system to Jafar's hands or Herc's head, for
 instance, i would call set_birth_node on the appropriate node.  This only
 needs to be set once, but take care that the node doesn't get destroyed (BAD
 things happen...).
@@ -117,8 +117,8 @@ are pretty cool.  You'll probably want your spawned systems to die of age
 (as opposed to explicit kill), so be sure to set your template system with
 the system_grows_older flag as true, but you might not.
 
-Things you need to do (note here that the word template is overloaded, i 
-don't mean C++ templates but the particle system templates, instances 
+Things you need to do (note here that the word template is overloaded, I
+don't mean C++ templates but the particle system templates, instances
 of which will be allocated at particle death time):
   1. Create your template system(s, multiple systems are supported and
      picked at random when it becomes time to create a new system).  This
@@ -154,5 +154,3 @@ If you need a factory, include ___ParticleFactory.h, where ___ is one of:
   point, oriented
 
 If you want all of the particles, include <particles.h>
-
--charles nicholson

@@ -20,7 +20,7 @@ the primary scene in some meaningful way.
 
 OFFSCREEN BUFFERS
 
-To support offscreen rendering, Panda provies the GraphicsBuffer
+To support offscreen rendering, Panda provides the GraphicsBuffer
 class, which works exactly like GraphicsWindow except it corresponds
 to some part of the framebuffer which is not presented in a window.
 In fact, both classes inherit from a common base class,
@@ -34,7 +34,7 @@ call GraphicsEngine::make_window().
 
 To create a buffer specifically for rendering into a texture for
 multipass, it's best to use the GraphicsOutput::make_texture_buffer()
-interface, for instance from your main window: 
+interface, for instance from your main window:
 
   GraphicsOutput *new_buffer = win->make_texture_buffer();
 

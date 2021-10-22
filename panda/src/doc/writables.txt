@@ -7,21 +7,21 @@ reading and writing, BamWriter and BamReader.  The initial request to
 write/read an object is made to the manager.  The manager will take
 care of breaking/regenerating circular dependencies, making sure that
 type information is written/read correctly, ensuring shared memory
-references are refelected in or regenerated from the binary media,
+references are reflected in or regenerated from the binary media,
 etc...
 
 The overall process goes as follows.
 1) BamWriter needs to be created and given an appropriate DatagramSink for it to send
    datagrams into.
 2) Request to write an object is made to BamWriter
-3) BamWriter checks to see if that Type of object has been written before or not, if it has then 
+3) BamWriter checks to see if that Type of object has been written before or not, if it has then
    the index of that type is written, otherwise the index and type name are written.
 4) BamWriter then has the Object write itself into the datagram, and passes a reference to itself
    to the object.
-5) The object will write all information necessary to regenerate itself into the datagram, with 
-   2 exceptions. 
-	A) Any pointers to other objects needing to be written, are actually written through 
-	   requests to BamWriter.  This ensures that the object being pointed to does get 
+5) The object will write all information necessary to regenerate itself into the datagram, with
+   2 exceptions.
+	A) Any pointers to other objects needing to be written, are actually written through
+	   requests to BamWriter.  This ensures that the object being pointed to does get
            written to the datagram, and that multiple references do not cause the object
            to be written multiple times.
 	B) Any PointerToArrays are also written through requests to BamWriter.  This ensures
@@ -39,7 +39,7 @@ structure will be necessary if all of the objects are correctly "writable".
 
 For reading the process goes as follows
 1) Create a BamReader with an appropriate DatagramGenerator source.
-2) Requets to read an object from BamReader
+2) Requests to read an object from BamReader
 3) BamReader will then read in the type of the object, and check that type against the current
    dynamic index.
 4) BamReader will then make a call to the TypedWritable factory to generate an object of that
