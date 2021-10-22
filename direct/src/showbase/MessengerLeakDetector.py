@@ -85,7 +85,7 @@ class MessengerLeakDetector(Job):
                     # swap the lists, prepare for the next pass
                     curObjList = nextObjList
                     nextObjList = []
-                    assert self.notify.debug('next search iteration, num objects: %s' % len(curObjList))
+                    assert self.notify.debug('Next search iteration, num objects: %s' % len(curObjList))
                     for curObj in curObjList:
                         if foundBuiltin:
                             break

@@ -58,7 +58,7 @@ class FrameProfiler:
 
     def _setEnabled(self, enabled):
         if enabled:
-            self.notify.info('frame profiler started')
+            self.notify.info('Frame profiler started.')
             self._startTime = globalClock.getFrameTime()
             self._profileCounter = 0
             self._jitter = None
@@ -80,7 +80,7 @@ class FrameProfiler:
             for session in self._id2session.values():
                 session.release()
             del self._id2session
-            self.notify.info('frame profiler stopped')
+            self.notify.info('Frame profiler stopped.')
 
     def _scheduleNextProfileDoLater(self, task):
         self._scheduleNextProfile()
@@ -163,7 +163,7 @@ class FrameProfiler:
                     if counter >= 3:
                         counter = 0
                         yield Task.cont
-                    self.notify.info('aggregate profile of sampled frames over last %s\n%s' %
+                    self.notify.info('Aggregating profile of sampled frames over last %s\n%s' %
                                      (formatTimeExact(period), p2ap[period].getResults()))
                     counter += 1
                     # aggregate this profile into the next larger profile

@@ -136,7 +136,7 @@ class DistributedObject(DistributedObjectBase):
         # should be removed
         if len(autoInterests) > 1:
             self.notify.error(
-                'only one auto-interest allowed per DC class, %s has %s autoInterests (%s)' %
+                'Only one auto-interest allowed per DC class, %s has %s autoInterests (%s)' %
                 (self.dclass.getName(), len(autoInterests), list(autoInterests)))
         _getAutoInterests = None
         return list(autoInterests)

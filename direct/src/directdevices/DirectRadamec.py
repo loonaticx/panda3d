@@ -72,7 +72,7 @@ class DirectRadamec(DirectObject):
     # max/min numbers of the Radamec device
     def normalizeChannel(self, chan, minVal = -1, maxVal = 1):
         if chan < 0 or chan >= min(len(self.maxRange), len(self.minRange)):
-            raise RuntimeError("can't normalize this channel (channel %d)" % chan)
+            raise RuntimeError("Can't normalize this channel! (channel %d)" % chan)
 
         maxRange = self.maxRange[chan]
         minRange = self.minRange[chan]

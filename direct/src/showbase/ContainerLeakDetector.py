@@ -525,7 +525,7 @@ class FindContainers(Job):
                                 yield None
                         except:
                             # ref is invalid
-                            self.notify.debug('invalid startRef, stored as id %s' % startId)
+                            self.notify.debug('Invalid startRef, stored as id %s' % startId)
                             self._leakDetector.removeContainerById(startId)
                             continue
                         curObjRef = containerRef
@@ -534,7 +534,7 @@ class FindContainers(Job):
                     for curObj in curObjRef.getContainerGen():
                         yield None
                 except:
-                    self.notify.debug('lost current container, ref.getContainerGen() failed')
+                    self.notify.debug('Lost current container, ref.getContainerGen() failed')
                     # that container is gone, try again
                     curObjRef = None
                     continue
@@ -582,7 +582,7 @@ class FindContainers(Job):
                             attr = curObj[key]
                         except KeyError as e:
                             # this is OK because we are yielding during the iteration
-                            self.notify.debug('could not index into %s with key %s' % (
+                            self.notify.debug('Could not index into %s with key %s' % (
                                 parentObjRef, safeRepr(key)))
                             continue
                         hasLength = self._hasLength(attr)
@@ -775,7 +775,7 @@ class CheckContainers(Job):
                                             yield None
                                     except:
                                         # TODO
-                                        self.notify.debug('caught exception in getContainerByIdGen (2)')
+                                        self.notify.debug('Caught exception in getContainerByIdGen (2)')
                                     else:
                                         msg = ('%s (%s) consistently increased in size over the last '
                                                '3 periods (%s items at last measurement, current contents: %s)' %
@@ -796,9 +796,9 @@ class CheckContainers(Job):
                                             yield None
                                     except:
                                         # TODO
-                                        self.notify.debug('caught exception in getContainerByIdGen (3)')
+                                        self.notify.debug('Caught exception in getContainerByIdGen (3)')
                                     else:
-                                        msg = ('leak detected: %s (%s) consistently increased in size over the last '
+                                        msg = ('Leak detected: %s (%s) consistently increased in size over the last '
                                                '5 periods (%s items at last measurement, current contents: %s)' %
                                                (name, itype(container), idx2id2len[self._index][objId],
                                                 fastRepr(container, maxLen=CheckContainers.ReprItems)))

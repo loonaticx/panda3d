@@ -119,7 +119,7 @@ class ClusterMsgHandler:
         h=dgi.getFloat32()
         p=dgi.getFloat32()
         r=dgi.getFloat32()
-        self.notify.debug('new offset=%f %f %f  %f %f %f' % (x, y, z, h, p, r))
+        self.notify.debug('New offset=%f %f %f  %f %f %f' % (x, y, z, h, p, r))
         return (x, y, z, h, p, r)
 
     def makeCamFrustumDatagram(self, focalLength, filmSize, filmOffset):
@@ -195,7 +195,7 @@ class ClusterMsgHandler:
         h=dgi.getFloat32()
         p=dgi.getFloat32()
         r=dgi.getFloat32()
-        self.notify.debug(('  new position=%f %f %f  %f %f %f' %
+        self.notify.debug(('  New position=%f %f %f  %f %f %f' %
                            (x, y, z, h, p, r)))
         return (x, y, z, h, p, r)
 
@@ -245,7 +245,7 @@ class ClusterMsgHandler:
         sx=dgi.getFloat32()
         sy=dgi.getFloat32()
         sz=dgi.getFloat32()
-        self.notify.debug('  new position=%f %f %f  %f %f %f %f %f %f' %
+        self.notify.debug('  New position=%f %f %f  %f %f %f %f %f %f' %
                           (x, y, z, h, p, r, sx, sy, sz))
         return (x, y, z, h, p, r, sx, sy, sz)
 
@@ -296,5 +296,5 @@ class ClusterMsgHandler:
         frameCount=dgi.getUint32()
         frameTime=dgi.getFloat32()
         dt=dgi.getFloat32()
-        self.notify.debug('time data=%f %f' % (frameTime, dt))
+        self.notify.debug('Time data=%f %f' % (frameTime, dt))
         return (frameCount, frameTime, dt)

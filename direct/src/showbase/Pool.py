@@ -49,14 +49,14 @@ class Pool:
         elif item in self.__used:
             self.__used.remove(item)
         else:
-            self.notify.error("item not in pool")
+            self.notify.error("Item not in pool.")
 
     def checkout(self):
         """
         Get an arbitrary item from the pool.
         """
         if not self.__free:
-            self.notify.error("no items are free")
+            self.notify.error("No items are free.")
         item = self.__free.pop()
         self.__used.append(item)
         return item
@@ -67,7 +67,7 @@ class Pool:
         Error if the item is not checked out.
         """
         if item not in self.__used:
-            self.notify.error("item is not checked out")
+            self.notify.error("Item is not checked out.")
         self.__used.remove(item)
         self.__free.append(item)
 

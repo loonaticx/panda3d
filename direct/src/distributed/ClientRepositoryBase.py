@@ -319,7 +319,7 @@ class ClientRepositoryBase(ConnectionRepository):
         if doId in self.doId2ownerView:
             # ...it is in our dictionary.
             # Just update it.
-            self.notify.error('duplicate owner generate for %s (%s)' % (
+            self.notify.error('Duplicate owner generate for %s (%s)' % (
                 doId, dclass.getName()))
             distObj = self.doId2ownerView[doId]
             assert distObj.dclass == dclass
@@ -509,8 +509,8 @@ class ClientRepositoryBase(ConnectionRepository):
     def handleSystemMessageAknowledge(self, di):
         # Got a system message from the server.
         message = di.getString()
-        self.notify.info('Message with aknowledge from server: %s' % (message))
-        messenger.send("system message aknowledge", [message])
+        self.notify.info('Message with acknowledge from server: %s' % (message))
+        messenger.send("system message acknowledge", [message])
         return message
 
     def getObjectsOfClass(self, objClass):

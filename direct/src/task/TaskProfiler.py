@@ -44,7 +44,7 @@ class TaskTracker:
             if duration > (self.getAvgDuration() * self.SpikeThreshold):
                 isSpike = True
                 avgSession = self.getAvgSession()
-                s = '\n%s task CPU spike profile (%s) %s\n' % ('=' * 30, self._namePrefix, '=' * 30)
+                s = '\n%s Task CPU spike profile (%s) %s\n' % ('=' * 30, self._namePrefix, '=' * 30)
                 s += ('|' * 80) + '\n'
                 for sorts in (['cumulative'], ['time'], ['calls']):
                     s += ('-- AVERAGE --\n%s'
@@ -94,7 +94,7 @@ class TaskTracker:
                 s += self._avgSession.getResults(sorts=sorts)
             self.notify.info(s)
         else:
-            self.notify.info('task CPU profile (%s): no data collected' % self._namePrefix)
+            self.notify.info('Task CPU profile (%s): no data collected' % self._namePrefix)
 
 
 class TaskProfiler:
@@ -148,13 +148,13 @@ class TaskProfiler:
 
     def _setEnabled(self, enabled):
         if enabled:
-            self.notify.info('task profiler started')
+            self.notify.info('Task profiler started.')
             self._taskName = 'profile-tasks-%s' % id(self)
             taskMgr.add(self._doProfileTasks, self._taskName, priority=-200)
         else:
             taskMgr.remove(self._taskName)
             del self._taskName
-            self.notify.info('task profiler stopped')
+            self.notify.info('Task profiler stopped.')
 
     def _doProfileTasks(self, task=None):
         # gather data from the previous frame

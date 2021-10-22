@@ -115,12 +115,12 @@ class ClientRepository(ClientRepositoryBase):
             # repeat-generate, synthesized for the benefit of someone
             # else who just entered the zone.  Accept the new updates,
             # but don't make a formal generate.
-            assert self.notify.debug("performing generate-update for %s %s" % (dclass.getName(), doId))
+            assert self.notify.debug("Performing generate-update for %s %s" % (dclass.getName(), doId))
             dclass.receiveUpdateBroadcastRequired(distObj, di)
             dclass.receiveUpdateOther(distObj, di)
             return
 
-        assert self.notify.debug("performing generate for %s %s" % (dclass.getName(), doId))
+        assert self.notify.debug("Performing generate for %s %s" % (dclass.getName(), doId))
         dclass.startGenerate()
         # Create a new distributed object, and put it in the dictionary
         distObj = self.generateWithRequiredOtherFields(dclass, doId, di, 0, zoneId)
@@ -335,7 +335,7 @@ class ClientRepository(ClientRepositoryBase):
         self.considerHeartbeat()
 
     def handleMessageType(self, msgType, di):
-        self.notify.error("unrecognized message type %s" % (msgType))
+        self.notify.error("Unrecognized message type %s" % (msgType))
 
     def handleUpdateField(self, di):
         # The CMU update message starts with an additional field, not

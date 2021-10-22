@@ -158,7 +158,7 @@ class ConnectionRepository(
         # do these garbage checks independently over time
         numGarbage = GarbageReport.checkForGarbageLeaks()
         if numGarbage == 0:
-            self.gcNotify.debug('no garbage found, doubling gc threshold')
+            self.gcNotify.debug('No garbage found, doubling gc threshold.')
             a, b, c = gc.get_threshold()
             gc.set_threshold(min(a * 2, 1 << 30), b, c)
 
@@ -166,7 +166,7 @@ class ConnectionRepository(
             retVal = Task.again
 
         else:
-            self.gcNotify.warning('garbage found, reverting gc threshold')
+            self.gcNotify.warning('Garbage found, reverting gc threshold.')
             # the process is producing garbage, stick to the default collection threshold
             gc.set_threshold(*self._gcDefaultThreshold)
             retVal = Task.done

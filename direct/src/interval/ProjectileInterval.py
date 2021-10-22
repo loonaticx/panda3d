@@ -78,7 +78,7 @@ class ProjectileInterval(Interval):
         self.implicitStartPos = 0
         if startPos is None:
             if duration is None:
-                self.notify.error('must provide either startPos or duration')
+                self.notify.error('Must provide either startPos or duration.')
             self.duration = duration
             # we can't calc the trajectory until we know our starting
             # position; delay until the interval is actually started
@@ -142,11 +142,11 @@ class ProjectileInterval(Interval):
             if isinstance(time, list):
                 # projectile hits plane once going up, once going down
                 # assume they want the one on the way down
-                assert self.notify.debug('projectile hits plane twice at times: %s' %
+                assert self.notify.debug('Projectile hits plane twice at times: %s' %
                                   time)
                 time = max(*time)
             else:
-                assert self.notify.debug('projectile hits plane once at time: %s' %
+                assert self.notify.debug('Projectile hits plane once at time: %s' %
                                   time)
             return time
 
@@ -180,7 +180,7 @@ class ProjectileInterval(Interval):
                                                self.startVel[2], self.zAcc)
             if time is None:
                 self.notify.error(
-                    'projectile never reaches plane Z=%s' % endZ)
+                    'Projectile never reaches plane Z=%s' % endZ)
             self.duration = time
             self.endPos = None
         elif None not in (wayPoint, timeToWayPoint, endZ):
@@ -195,11 +195,11 @@ class ProjectileInterval(Interval):
                 self.startPos[2], endZ, self.startVel[2], self.zAcc)
             if time is None:
                 self.notify.error(
-                    'projectile never reaches plane Z=%s' % endZ)
+                    'Projectile never reaches plane Z=%s' % endZ)
             self.duration = time
             self.endPos = None
         else:
-            self.notify.error('invalid set of inputs to ProjectileInterval')
+            self.notify.error('Invalid set of inputs to ProjectileInterval')
 
         self.parabola = LParabola(VBase3(0, 0, 0.5 * self.zAcc),
                                   self.startVel,
@@ -223,7 +223,7 @@ class ProjectileInterval(Interval):
         try:
             self.__calcTrajectory(*self.trajectoryArgs)
         except Exception:
-            assert self.notify.error('invalid projectile parameters')
+            assert self.notify.error('Invalid projectile parameters')
             return False
         return True
 

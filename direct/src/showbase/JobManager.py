@@ -66,7 +66,7 @@ class JobManager:
             self._highestPriority = pri
         elif pri > self._highestPriority:
             self._highestPriority = pri
-        self.notify.debug('added job: %s' % job.getJobName())
+        self.notify.debug('Added job: %s' % job.getJobName())
 
     def remove(self, job):
         jobId = job._getJobId()
@@ -93,7 +93,7 @@ class JobManager:
                 else:
                     taskMgr.remove(JobManager.TaskName)
                     self._highestPriority = 0
-        self.notify.debug('removed job: %s' % job.getJobName())
+        self.notify.debug('Removed job: %s' % job.getJobName())
 
     def finish(self, job):
         # run this job, right now, until it finishes

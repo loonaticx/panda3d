@@ -97,7 +97,7 @@ class ClockDelta(DirectObject.DirectObject):
         that has been added to the global clock
         """
         assert self.notify.debug(
-            "adjusting timebase by %f seconds" % timeDelta)
+            "Adjusting timebase by %f seconds." % timeDelta)
         # adjust our timebase by the same amount
         self.delta += timeDelta
 
@@ -192,10 +192,10 @@ class ClockDelta(DirectObject.DirectObject):
         oldUncertainty = self.getUncertainty()
         if oldUncertainty is not None:
             self.notify.info(
-                'previous delta at %.3f s, +/- %.3f s.' %
+                'Previous delta at %.3f s, +/- %.3f s.' %
                 (self.delta, oldUncertainty))
             self.notify.info(
-                'new delta at %.3f s, +/- %.3f s.' %
+                'New delta at %.3f s, +/- %.3f s.' %
                 (newDelta, newUncertainty))
             # Our previous measurement was self.delta +/- oldUncertainty;
             # our new measurement is newDelta +/- newUncertainty.  Take
@@ -213,15 +213,15 @@ class ClockDelta(DirectObject.DirectObject):
             # measurement or the new measurement is completely wrong.
             if low > high:
                 if not trustNew:
-                    self.notify.info('discarding new delta.')
+                    self.notify.info('Discarding new delta.')
                     return 0
 
-                self.notify.info('discarding previous delta.')
+                self.notify.info('Discarding previous delta.')
             else:
                 newDelta = (low + high) / 2.0
                 newUncertainty = (high - low) / 2.0
                 self.notify.info(
-                    'intersection at %.3f s, +/- %.3f s.' %
+                    'Intersection at %.3f s, +/- %.3f s.' %
                     (newDelta, newUncertainty))
 
         self.delta = newDelta

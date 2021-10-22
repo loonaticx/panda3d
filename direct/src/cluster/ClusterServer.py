@@ -107,7 +107,7 @@ class ClusterServer(DirectObject.DirectObject):
             self.objectMappings[name] = object
             self.objectHasColor[name] = hasColor
         else:
-            self.notify.debug('attempt to add duplicate named object: '+name)
+            self.notify.debug('Attempted to add duplicate named object: '+name)
 
     def removeObjectMapping(self, name):
         if name in self.objectMappings:
@@ -134,7 +134,7 @@ class ClusterServer(DirectObject.DirectObject):
             self.controlPriorities[objectName] = priority
             self.redoSortedPriorities()
         else:
-            self.notify.debug('attempt to add duplicate controlled object: '+name)
+            self.notify.debug('Attempted to add duplicate controlled object: '+name)
 
     def setControlMappingOffset(self, objectName, offset):
         if objectName in self.controlMappings:
@@ -149,7 +149,7 @@ class ClusterServer(DirectObject.DirectObject):
 
 
     def startControlObjectTask(self):
-        self.notify.debug("moving control objects")
+        self.notify.debug("Moving control objects...")
         taskMgr.add(self.controlObjectTask,"controlObjectTask",50)
 
     def controlObjectTask(self, task):
@@ -166,12 +166,12 @@ class ClusterServer(DirectObject.DirectObject):
 
 
     def sendNamedMovementDone(self):
-        self.notify.debug("named movement done")
+        self.notify.debug("Named movement done.")
         datagram = self.msgHandler.makeNamedMovementDone()
         self.cw.send(datagram,self.lastConnection)
 
     def moveObject(self, nodePath, object, offset, hasColor):
-        self.notify.debug('moving object '+object)
+        self.notify.debug('Moving object '+object)
         #print "moving object",object
         xyz = nodePath.getPos(render) + offset
         hpr = nodePath.getHpr(render)
@@ -237,7 +237,7 @@ class ClusterServer(DirectObject.DirectObject):
 
     def sendSwapReady(self):
         self.notify.debug(
-            'send swap ready packet %d' % self.msgHandler.packetNumber)
+            'Sending swap ready packet %d' % self.msgHandler.packetNumber)
         datagram = self.msgHandler.makeSwapReadyDatagram()
         self.cw.send(datagram, self.lastConnection)
 
@@ -306,7 +306,7 @@ class ClusterServer(DirectObject.DirectObject):
             else:
                 self.objectMappings[name].show()
         else:
-            self.notify.debug("recieved unknown named object command: "+name)
+            self.notify.debug("Received unknown named object command: "+name)
 
 
     def handleMessageQueue(self):

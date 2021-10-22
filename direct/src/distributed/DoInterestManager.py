@@ -502,7 +502,7 @@ class DoInterestManager(DirectObject.DirectObject):
                 action, description, handle, contextId, parentId, zoneIdList)
         if parentId == 0:
             DoInterestManager.notify.error(
-                'trying to set interest to invalid parent: %s' % parentId)
+                'Trying to set interest to invalid parent: %s' % parentId)
         datagram = PyDatagram()
         # Add message type
         if isinstance(zoneIdList, list):

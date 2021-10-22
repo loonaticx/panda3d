@@ -91,7 +91,7 @@ class RelatedObjectMgr(DirectObject.DirectObject):
         if len(doIdsPending) == 0:
             # All the objects exist, so just call the callback
             # immediately.
-            assert self.notify.debug("All objects already exist.")
+            assert self.notify.debug("All objects already exist!")
             if allCallback:
                 allCallback(objects)
             return
@@ -141,7 +141,7 @@ class RelatedObjectMgr(DirectObject.DirectObject):
         """
         if tuple:
             allCallback, eachCallback, timeoutCallback, doIdsPending, doIdList, doLaterName = tuple
-            assert self.notify.debug("aborting request for %s (remaining: %s)" % (doIdList, doIdsPending))
+            assert self.notify.debug("Aborting request for %s (remaining: %s)" % (doIdList, doIdsPending))
 
             if doLaterName:
                 taskMgr.remove(doLaterName)
@@ -170,7 +170,7 @@ class RelatedObjectMgr(DirectObject.DirectObject):
 
     def __timeoutExpired(self, tuple):
         allCallback, eachCallback, timeoutCallback, doIdsPending, doIdList, doLaterName = tuple
-        assert self.notify.debug("timeout expired for %s (remaining: %s)" % (doIdList, doIdsPending))
+        assert self.notify.debug("Timeout expired for %s (remaining: %s)" % (doIdList, doIdsPending))
 
         self.__removePending(tuple, doIdsPending)
         if timeoutCallback:

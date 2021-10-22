@@ -116,7 +116,7 @@ class GarbageReport(Job):
             yield None
 
         if self._args.verbose:
-            self.notify.info('found %s garbage items' % self.numGarbage)
+            self.notify.info('Found %s garbage items' % self.numGarbage)
 
         # print the types of the garbage first, in case the repr of an object
         # causes a crash
@@ -150,7 +150,7 @@ class GarbageReport(Job):
         # grab the referrers (pointing to garbage)
         if self._args.fullReport and (self.numGarbage != 0):
             if self._args.verbose:
-                self.notify.info('getting referrers...')
+                self.notify.info('Getting referrers...')
             for i in range(self.numGarbage):
                 yield None
                 for result in self._getReferrers(self.garbage[i]):
@@ -162,7 +162,7 @@ class GarbageReport(Job):
         # grab the referents (pointed to by garbage)
         if self.numGarbage > 0:
             if self._args.verbose:
-                self.notify.info('getting referents...')
+                self.notify.info('Getting referents...')
             for i in range(self.numGarbage):
                 yield None
                 for result in self._getReferents(self.garbage[i]):
@@ -186,7 +186,7 @@ class GarbageReport(Job):
         # find the cycles
         if self._args.findCycles and self.numGarbage > 0:
             if self._args.verbose:
-                self.notify.info('calculating cycles...')
+                self.notify.info('Calculating cycles...')
             for i in range(self.numGarbage):
                 yield None
                 for newCycles in self._getCycles(i, self.uniqueCycleSets):

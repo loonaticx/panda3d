@@ -130,18 +130,18 @@ class Messenger:
         notifyDebug = Messenger.notify.getDebug()
         if notifyDebug:
             Messenger.notify.debug(
-                "object: %s (%s)\n accepting: %s\n method: %s\n extraArgs: %s\n persistent: %s" %
+                "Object: %s (%s)\n accepting: %s\n method: %s\n extraArgs: %s\n persistent: %s" %
                 (safeRepr(object), self._getMessengerId(object), event, safeRepr(method),
                  safeRepr(extraArgs), persistent))
 
         # Make sure that the method is callable
         assert hasattr(method, '__call__'), (
-            "method not callable in accept (ignoring): %s %s"%
+            "Method not callable in accept (ignoring): %s %s"%
             (safeRepr(method), safeRepr(extraArgs)))
 
         # Make sure extraArgs is a list or tuple
         if not (isinstance(extraArgs, list) or isinstance(extraArgs, tuple) or isinstance(extraArgs, set)):
-            raise TypeError("A list is required as extraArgs argument")
+            raise TypeError("A list is required as extraArgs argument.")
 
         self.lock.acquire()
         try:
@@ -157,11 +157,11 @@ class Messenger:
                     oldMethod = acceptorDict[id][0]
                     if oldMethod == method:
                         self.notify.warning(
-                            "object: %s was already accepting: \"%s\" with same callback: %s()" %
+                            "Object: %s was already accepting: \"%s\" with same callback: %s()" %
                             (object.__class__.__name__, safeRepr(event), method.__name__))
                     else:
                         self.notify.warning(
-                            "object: %s accept: \"%s\" new callback: %s() supplanting old callback: %s()" %
+                            "Object: %s accept: \"%s\" new callback: %s() supplanting old callback: %s()" %
                             (object.__class__.__name__, safeRepr(event), method.__name__, oldMethod.__name__))
 
             acceptorDict[id] = [method, extraArgs, persistent]
@@ -300,7 +300,7 @@ class Messenger:
         """
         if Messenger.notify.getDebug() and not self.quieting.get(event):
             assert Messenger.notify.debug(
-                'sent event: %s sentArgs = %s, taskChain = %s' % (
+                'Sent event: %s sentArgs = %s, taskChain = %s' % (
                 event, sentArgs, taskChain))
 
         self.lock.acquire()

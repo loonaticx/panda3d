@@ -133,7 +133,7 @@ class ControlManager:
             #else:
             #    print "Controls are already", name
         else:
-            assert self.notify.debug("Unkown controls: %s" % name)
+            assert self.notify.debug("Unknown controls: %s" % name)
 
     def setSpeeds(self, forwardSpeed, jumpForce,
             reverseSpeed, rotateSpeed, strafeLeft=0, strafeRight=0):

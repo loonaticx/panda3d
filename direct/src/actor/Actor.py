@@ -412,13 +412,13 @@ class Actor(DirectObject, NodePath):
         else:
             partBundleDict = self.__partBundleDict.get(lodName)
             if not partBundleDict:
-                Actor.notify.error("no lod named: %s" % (lodName))
+                Actor.notify.error("No LOD named: %s" % (lodName))
 
         subpartDef = self.__subpartDict.get(partName, Actor.SubpartDef(partName))
 
         partDef = partBundleDict.get(subpartDef.truePartName)
         if partDef is None:
-            Actor.notify.error("no part named: %s" % (partName))
+            Actor.notify.error("No part named: %s" % (partName))
 
         self.__doListJoints(0, partDef.getBundle(),
                             subpartDef.subset.isIncludeEmpty(), subpartDef.subset)
@@ -1494,7 +1494,7 @@ class Actor(DirectObject, NodePath):
         for nodeNum, thisGeomNode in enumerate(geomNodes):
             for geomNum, thisGeom in enumerate(thisGeomNode.node().getGeoms()):
                 thisGeom.markBoundsStale()
-                assert Actor.notify.debug("fixing bounds for node %s, geom %s" % \
+                assert Actor.notify.debug("Fixing bounds for node %s, geom %s" % \
                                           (nodeNum, geomNum))
             thisGeomNode.node().markInternalBoundsStale()
 
@@ -1731,12 +1731,12 @@ class Actor(DirectObject, NodePath):
         animDict = partDict.get(partName)
         if animDict is None:
             # part was not present
-            Actor.notify.warning("couldn't find part: %s" % (partName))
+            Actor.notify.warning("Couldn't find part: %s" % (partName))
         else:
             anim = animDict.get(animName)
             if anim is None:
                 # anim was not present
-                assert Actor.notify.debug("couldn't find anim: %s" % (animName))
+                assert Actor.notify.debug("Couldn't find anim: %s" % (animName))
             else:
                 # bind the animation first if we need to
                 if not anim.animControl:
@@ -1856,7 +1856,7 @@ class Actor(DirectObject, NodePath):
 
                         if anim is None:
                             # anim was not present
-                            assert Actor.notify.debug("couldn't find anim: %s" % (animName))
+                            assert Actor.notify.debug("Couldn't find anim: %s" % (animName))
                         else:
                             # bind the animation first if we need to
                             animControl = anim.animControl
@@ -1954,7 +1954,7 @@ class Actor(DirectObject, NodePath):
             if numAnims != 0:
                 # If the model had some animations, store them in the
                 # dict so they can be played.
-                Actor.notify.info("model contains %s animations." % (numAnims))
+                Actor.notify.info("Model contains %s animations." % (numAnims))
 
                 # make sure this lod is in anim control dict
                 if self.mergeLODBundles:
@@ -2356,7 +2356,7 @@ class Actor(DirectObject, NodePath):
             animDict[animName] = anim
 
         if anim is None:
-            Actor.notify.error("actor has no animation %s", animName)
+            Actor.notify.error("Actor has no animation %s", animName)
 
         # only bind if not already bound!
         if anim.animControl:
@@ -2386,7 +2386,7 @@ class Actor(DirectObject, NodePath):
 
         # store the animControl
         anim.animControl = animControl
-        assert Actor.notify.debug("binding anim: %s to part: %s, lod: %s" %
+        assert Actor.notify.debug("Binding anim: %s to part: %s, lod: %s" %
                                   (animName, partName, lodName))
         return animControl
 
@@ -2415,7 +2415,7 @@ class Actor(DirectObject, NodePath):
                     self.__prepareBundle(bundleNP, partDef.partModel,
                                          partName, lodName)
                 else:
-                    Actor.notify.error("lod: %s has no matching part: %s" %
+                    Actor.notify.error("LOD: %s has no matching part: %s" %
                                        (lodName, partName))
 
     def __copySubpartDict(self, other):

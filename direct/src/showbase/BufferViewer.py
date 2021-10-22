@@ -80,7 +80,7 @@ class BufferViewer(DirectObject):
         """Turn the buffer viewer on or off.  The initial state of the
         buffer viewer depends on the Config variable 'show-buffers'."""
         if x != 0 and x != 1:
-            BufferViewer.notify.error('invalid parameter to BufferViewer.enable')
+            BufferViewer.notify.error('Invalid parameter to BufferViewer.enable')
             return
         self.enabled = x
         self.dirty = 1
@@ -103,7 +103,7 @@ class BufferViewer(DirectObject):
         to choose a reasonable size for the card.  The initial
         value is (0, 0)."""
         if x < 0 or y < 0:
-            BufferViewer.notify.error('invalid parameter to BufferViewer.setCardSize')
+            BufferViewer.notify.error('Invalid parameter to BufferViewer.setCardSize')
             return
         self.sizex = x
         self.sizey = y
@@ -121,8 +121,8 @@ class BufferViewer(DirectObject):
         The initial value is 'lrcorner'."""
         valid = ["llcorner", "lrcorner", "ulcorner", "urcorner", "window"]
         if valid.count(pos) == 0:
-            BufferViewer.notify.error('invalid parameter to BufferViewer.setPosition')
-            BufferViewer.notify.error('valid parameters are: llcorner, lrcorner, ulcorner, urcorner, window')
+            BufferViewer.notify.error('Invalid parameter to BufferViewer.setPosition')
+            BufferViewer.notify.error('Valid parameters are: llcorner, lrcorner, ulcorner, urcorner, window')
             return
         if pos == "window":
             BufferViewer.notify.error('BufferViewer.setPosition - "window" mode not implemented yet.')
@@ -142,8 +142,8 @@ class BufferViewer(DirectObject):
         The default value is 'hline'."""
         valid=["vline", "hline", "vgrid", "hgrid", "cycle"]
         if valid.count(lay) == 0:
-            BufferViewer.notify.error('invalid parameter to BufferViewer.setLayout')
-            BufferViewer.notify.error('valid parameters are: vline, hline, vgrid, hgrid, cycle')
+            BufferViewer.notify.error('Invalid parameter to BufferViewer.setLayout')
+            BufferViewer.notify.error('Valid parameters are: vline, hline, vgrid, hgrid, cycle')
             return
         self.layout = lay
         self.dirty = 1
@@ -366,7 +366,7 @@ class BufferViewer(DirectObject):
             rows = 1
             cols = 1
         else:
-            BufferViewer.notify.error('shouldnt ever get here in BufferViewer.maintainReadout')
+            BufferViewer.notify.error('Shouldn\'t ever get here in BufferViewer.maintainReadout!')
 
         # Choose an aspect ratio for the cards.  All card size
         # calculations are done in pixel-units, using integers,
@@ -437,7 +437,7 @@ class BufferViewer(DirectObject):
             dirx =  1.0
             diry =  1.0
         else:
-            BufferViewer.notify.error('window mode not implemented yet')
+            BufferViewer.notify.error('Window mode not implemented yet.')
 
         # Create the frame
         frame = self.makeFrame(sizex, sizey)
