@@ -98,7 +98,7 @@ class DirectLights(NodePath):
 
     def allOn(self):
         """
-        Turn on all DIRECT lights
+        Turn on all DIRECT lights.
         """
         for light in self.lightDict.values():
             self.setOn(light)
@@ -107,14 +107,14 @@ class DirectLights(NodePath):
 
     def allOff(self):
         """
-        Turn off all DIRECT lights
+        Turn off all DIRECT lights.
         """
         for light in self.lightDict.values():
             self.setOff(light)
 
     def toggle(self):
         """
-        Toggles light attribute, but doesn't toggle individual lights
+        Toggles light attribute, but doesn't toggle individual lights.
         """
         if render.node().hasAttrib(LightAttrib.getClassType()):
             self.allOff()
@@ -123,12 +123,12 @@ class DirectLights(NodePath):
 
     def setOn(self, directLight):
         """
-        Turn on the given directLight
+        Turn on the given directLight.
         """
         render.setLight(directLight)
 
     def setOff(self, directLight):
         """
-        Turn off the given directLight
+        Turn off the given directLight.
         """
         render.clearLight(directLight)

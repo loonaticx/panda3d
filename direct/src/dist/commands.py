@@ -1082,7 +1082,7 @@ class build_apps(setuptools.Command):
         try:
             self.announce('copying {0} -> {1}'.format(os.path.relpath(source_path, self.build_base), os.path.relpath(target_path, self.build_base)))
         except ValueError:
-            # No relative path (e.g., files on different drives in Windows), just print absolute paths instead
+            # No relative path (e.g., files on different drives in Windows), just print absolute paths instead.
             self.announce('copying {0} -> {1}'.format(source_path, target_path))
 
         # Make the directory if it does not yet exist.
@@ -1092,7 +1092,7 @@ class build_apps(setuptools.Command):
 
         # Copy the file, and open it for analysis.
         if '.whl' in source_path:
-            # This was found in a wheel, extract it
+            # This was found in a wheel, extract it.
             whl, wf = source_path.split('.whl' + os.path.sep)
             whl += '.whl'
             whlfile = self._get_zip_file(whl)
@@ -1100,7 +1100,7 @@ class build_apps(setuptools.Command):
             with open(target_path, 'wb') as f:
                 f.write(data)
         else:
-            # Regular file, copy it
+            # Regular file, copy it.
             shutil.copyfile(source_path, target_path)
 
     def copy_with_dependencies(self, source_path, target_path, search_path):
@@ -1167,7 +1167,7 @@ class build_apps(setuptools.Command):
 
         ident = elf.read(12)
 
-        # Make sure we read in the correct endianness and integer size
+        # Make sure we read in the correct endianness and integer size.
         byte_order = "<>"[ord(ident[1:2]) - 1]
         elf_class = ord(ident[0:1]) - 1 # 0 = 32-bits, 1 = 64-bits
         header_struct = byte_order + ("HHIIIIIHHHHHH", "HHIQQQIHHHHHH")[elf_class]
@@ -1183,7 +1183,7 @@ class build_apps(setuptools.Command):
         elf.seek(shoff)
         for i in range(shnum):
             type, offset, size, link, entsize = struct.unpack_from(section_struct, elf.read(shentsize))
-            if type == 6 and link != 0: # DYNAMIC type, links to string table
+            if type == 6 and link != 0: # DYNAMIC type, links to string table.
                 dynamic_sections.append((offset, size, link, entsize))
                 string_tables[link] = None
 

@@ -1114,7 +1114,7 @@ class ObjectHandles(NodePath, DirectObject):
         self.zScaleCollision = self.zScaleGroup.find('**/z-post')
         self.zScaleCollision.setName('z-scale')
 
-        # Adjust visiblity, colors, and transparency
+        # Adjust visibility, colors, and transparency
         self.xPostCollision.hide()
         self.xRingCollision.hide()
         self.xScaleCollision.hide()

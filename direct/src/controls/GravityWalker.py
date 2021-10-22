@@ -12,7 +12,7 @@ it does not:
 - play sounds
 - play animations
 
-although it does send messages that allow a listener to play sounds or
+Although it does send messages that allow a listener to play sounds or
 animations based on walker events.
 """
 from direct.directnotify.DirectNotifyGlobal import directNotify
@@ -334,7 +334,7 @@ class GravityWalker(DirectObject.DirectObject):
 
     def placeOnFloor(self):
         """
-        Make a reasonable effor to place the avatar on the ground.
+        Make a reasonable effort to place the avatar on the ground.
         For example, this is useful when switching away from the
         current walker.
         """

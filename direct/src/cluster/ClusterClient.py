@@ -351,7 +351,7 @@ class ClusterClient(DirectObject.DirectObject):
         elif type == CLUSTER_NAMED_OBJECT_MOVEMENT:
             self.serverQueues[server].append(self.msgHandler.parseNamedMovementDatagram(dgi))
             #self.handleNamedMovement(dgi)
-        # when we recieve a 'named movement done' packet from a server we handle
+        # when we receive a 'named movement done' packet from a server we handle
         # all of its messages
         elif type == CLUSTER_NAMED_MOVEMENT_DONE:
             self.handleMessageQueue(server)

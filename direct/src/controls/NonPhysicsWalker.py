@@ -95,7 +95,7 @@ class NonPhysicsWalker(DirectObject.DirectObject):
         cSphereNode.setFromCollideMask(self.cSphereBitMask)
         cSphereNode.setIntoCollideMask(BitMask32.allOff())
 
-        # Set up the collison ray
+        # Set up the collision ray
         # This is a ray cast from your head down to detect floor polygons.
         # This ray start is arbitrarily high in the air.  Feel free to use
         # a higher or lower value depending on whether you want an avatar
@@ -166,7 +166,7 @@ class NonPhysicsWalker(DirectObject.DirectObject):
 
     def placeOnFloor(self):
         """
-        Make a reasonable effor to place the avatar on the ground.
+        Make a reasonable effort to place the avatar on the ground.
         For example, this is useful when switching away from the
         current walker.
         """

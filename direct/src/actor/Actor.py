@@ -88,7 +88,7 @@ class Actor(DirectObject, NodePath):
     class SubpartDef:
 
         """Instances of this class are stored within the SubpartDict
-        to track the existance of arbitrary sub-parts.  These are
+        to track the existence of arbitrary sub-parts.  These are
         designed to appear to the user to be identical to true "part"
         of a multi-part Actor, but in fact each subpart represents a
         subset of the joints of an existing part (which is accessible
@@ -156,11 +156,11 @@ class Actor(DirectObject, NodePath):
 
         Other useful Actor class functions::
 
-            #fix actor eye rendering
+            # fix actor eye rendering
             a.drawInFront("joint-pupil?", "eyes*")
 
-            #fix bounding volumes - this must be done after drawing
-            #the actor for a few frames, otherwise it has no effect
+            # fix bounding volumes - this must be done after drawing
+            # the actor for a few frames, otherwise it has no effect
             a.fixBounds()
         """
         if hasattr(self, 'Actor_initialized'):
@@ -355,7 +355,7 @@ class Actor(DirectObject, NodePath):
         if overwrite:
             otherCopy = other.copyTo(NodePath())
             otherCopy.detachNode()
-            # assign these elements to ourselve (overwrite)
+            # assign these elements to ourself (overwrite)
             self.assign(otherCopy)
         else:
             # just copy these to ourselves
@@ -821,7 +821,7 @@ class Actor(DirectObject, NodePath):
         Return actual frame rate of given anim name and given part.
         If no anim specified, use the currently playing anim.
         If no part specified, return anim durations of first part.
-        NOTE: returns info only for an arbitrary LOD
+        NOTE: returns info only for an arbitrary LOD.
         """
         lodName = next(iter(self.__animControlDict))
         controls = self.getAnimControls(animName, partName)
@@ -847,7 +847,7 @@ class Actor(DirectObject, NodePath):
         Return the play rate of given anim for a given part.
         If no part is given, assume first part in dictionary.
         If no anim is given, find the current anim for the part.
-        NOTE: Returns info only for an arbitrary LOD
+        NOTE: Returns info only for an arbitrary LOD.
         """
         if self.__animControlDict:
             # use the first lod
@@ -866,7 +866,7 @@ class Actor(DirectObject, NodePath):
         currently-playing anim, but this was confusing and could lead
         to the wrong anim's play rate getting set.  Better to insist
         on this parameter.
-        NOTE: sets play rate on all LODs"""
+        NOTE: sets play rate on all LODs."""
         for control in self.getAnimControls(animName, partName):
             control.setPlayRate(rate)
 
@@ -876,7 +876,7 @@ class Actor(DirectObject, NodePath):
         Return duration of given anim name and given part.
         If no anim specified, use the currently playing anim.
         If no part specified, return anim duration of first part.
-        NOTE: returns info for arbitrary LOD
+        NOTE: returns info for arbitrary LOD.
         """
         lodName = next(iter(self.__animControlDict))
         controls = self.getAnimControls(animName, partName)
@@ -907,7 +907,7 @@ class Actor(DirectObject, NodePath):
         """
         Return the anim currently playing on the actor. If part not
         specified return current anim of an arbitrary part in dictionary.
-        NOTE: only returns info for an arbitrary LOD
+        NOTE: only returns info for an arbitrary LOD.
         """
         if len(self.__animControlDict) == 0:
             return
@@ -935,7 +935,7 @@ class Actor(DirectObject, NodePath):
         Return the current frame number of the named anim, or if no
         anim is specified, then the anim current playing on the
         actor. If part not specified return current anim of first part
-        in dictionary.  NOTE: only returns info for an arbitrary LOD
+        in dictionary.  NOTE: only returns info for an arbitrary LOD.
         """
         lodName, animControlDict = next(iter(self.__animControlDict.items()))
         if partName is None:
@@ -968,7 +968,7 @@ class Actor(DirectObject, NodePath):
     def getPart(self, partName, lodName="lodRoot"):
         """
         Find the named part in the optional named lod and return it, or
-        return None if not present
+        return None if not present.
         """
         partBundleDict = self.__partBundleDict.get(lodName)
         if not partBundleDict:
@@ -983,7 +983,7 @@ class Actor(DirectObject, NodePath):
     def getPartBundle(self, partName, lodName="lodRoot"):
         """
         Find the named part in the optional named lod and return its
-        associated PartBundle, or return None if not present
+        associated PartBundle, or return None if not present.
         """
         partBundleDict = self.__partBundleDict.get(lodName)
         if not partBundleDict:
@@ -999,7 +999,7 @@ class Actor(DirectObject, NodePath):
         """
         Remove the geometry and animations of the named part of the
         optional named lod if present.
-        NOTE: this will remove child geometry also!
+        NOTE: This will remove child geometry also!
         """
         # find the corresponding part bundle dict
         partBundleDict = self.__partBundleDict.get(lodName)
@@ -1028,7 +1028,7 @@ class Actor(DirectObject, NodePath):
         """
         Make the given part of the optionally given lod not render,
         even though still in the tree.
-        NOTE: this will affect child geometry
+        NOTE: This will affect child geometry.
         """
         partBundleDict = self.__partBundleDict.get(lodName)
         if not partBundleDict:
@@ -1043,7 +1043,7 @@ class Actor(DirectObject, NodePath):
     def showPart(self, partName, lodName="lodRoot"):
         """
         Make the given part render while in the tree.
-        NOTE: this will affect child geometry
+        NOTE: This will affect child geometry.
         """
         partBundleDict = self.__partBundleDict.get(lodName)
         if not partBundleDict:
@@ -1058,7 +1058,7 @@ class Actor(DirectObject, NodePath):
     def showAllParts(self, partName, lodName="lodRoot"):
         """
         Make the given part and all its children render while in the tree.
-        NOTE: this will affect child geometry
+        NOTE: This will affect child geometry.
         """
         partBundleDict = self.__partBundleDict.get(lodName)
         if not partBundleDict:
@@ -1330,7 +1330,7 @@ class Actor(DirectObject, NodePath):
 
     def instance(self, path, partName, jointName, lodName="lodRoot"):
         """instance(self, NodePath, string, string, key="lodRoot")
-        Instance a nodePath to an actor part at a joint called jointName"""
+        Instance a NodePath to an actor part at a joint called jointName."""
         partBundleDict = self.__partBundleDict.get(lodName)
         if partBundleDict:
             subpartDef = self.__subpartDict.get(partName, Actor.SubpartDef(partName))
@@ -1348,7 +1348,7 @@ class Actor(DirectObject, NodePath):
 
     def attach(self, partName, anotherPartName, jointName, lodName="lodRoot"):
         """attach(self, string, string, string, key="lodRoot")
-        Attach one actor part to another at a joint called jointName"""
+        Attach one Actor part to another at a joint called jointName."""
         partBundleDict = self.__partBundleDict.get(lodName)
         if partBundleDict:
             subpartDef = self.__subpartDict.get(partName, Actor.SubpartDef(partName))
@@ -1477,7 +1477,7 @@ class Actor(DirectObject, NodePath):
         """fixBounds(self, nodePath=None)
         Force recomputation of bounding spheres for all geoms
         in a given part. If no part specified, fix all geoms
-        in this actor
+        in this actor.
         """
         # if no part name specified fix all parts
         if part is None:
@@ -1500,7 +1500,7 @@ class Actor(DirectObject, NodePath):
 
     def showAllBounds(self):
         """
-        Show the bounds of all actor geoms
+        Show the bounds of all Actor GeomNodes.
         """
         geomNodes = self.__geomNode.findAllMatches("**/+GeomNode")
 
@@ -1509,7 +1509,7 @@ class Actor(DirectObject, NodePath):
 
     def hideAllBounds(self):
         """
-        Hide the bounds of all actor geoms
+        Hide the bounds of all Actor GeomNodes.
         """
         geomNodes = self.__geomNode.findAllMatches("**/+GeomNode")
 
@@ -1681,7 +1681,7 @@ class Actor(DirectObject, NodePath):
     def getAnimFilename(self, animName, partName='modelRoot'):
         """
         getAnimFilename(self, animName)
-        return the animFilename given the animName
+        return the animFilename given the animName.
         """
         if self.mergeLODBundles:
             lodName = 'common'
@@ -2393,7 +2393,7 @@ class Actor(DirectObject, NodePath):
     def __copyPartBundles(self, other):
         """__copyPartBundles(self, Actor)
         Copy the part bundle dictionary from another actor as this
-        instance's own. NOTE: this method does not actually copy geometry
+        instance's own. NOTE: this method does not actually copy geometry!
         """
         for lodName in other.__partBundleDict:
             # find the lod Asad
@@ -2436,7 +2436,7 @@ class Actor(DirectObject, NodePath):
         Get the anims from the anim control's in the anim control
         dictionary of another actor. Bind these anim's to the part
         bundles in our part bundle dict that have matching names, and
-        store the resulting anim controls in our own part bundle dict"""
+        store the resulting anim controls in our own part bundle dict."""
 
         assert other.mergeLODBundles == self.mergeLODBundles
 

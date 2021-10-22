@@ -8,7 +8,7 @@ You can use :func:`verify()` just like assert, with these small differences:
 
     assert foo  # OK
     verify foo  # Error
-    assert foo  # Not Recomended (may be interpreted as a tuple)
+    assert foo  # Not Recommended (may be interpreted as a tuple)
     verify(foo) # OK
 
 - :func:`verify()` will print something like this before raising an exception::
@@ -30,7 +30,7 @@ replace assert more fully).
 
 Please do not use assert for things that you want run on release builds.
 That is a bad thing to do.  One of the main reasons that assert exists
-is to stip out debug code from a release build.  The fact that it throws
+is to strip out debug code from a release build.  The fact that it throws
 an exception can get it mistaken for an error handler.  If your code
 needs to handle an error or throw an exception, you should do that
 (and not just assert for it).

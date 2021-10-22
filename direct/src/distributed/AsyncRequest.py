@@ -32,7 +32,7 @@ class AsyncRequest(DirectObject):
     askForObject or createObject afterwards.  That way the _checkCompletion
     will not call finish until after all the requests have been done.
 
-    If you need to chain serveral object reads or creates, just add more
+    If you need to chain several object reads or creates, just add more
     entries to the self.neededObjects dictionary in the self.finish function
     and return without calling AsyncRequest.finish().  Your finish method
     will be called again when the new self.neededObjects is complete.  You
@@ -46,7 +46,7 @@ class AsyncRequest(DirectObject):
                  timeoutTime = ASYNC_REQUEST_DEFAULT_TIMEOUT_IN_SECONDS,
                  numRetries = ASYNC_REQUEST_DEFAULT_NUM_RETRIES):
         """
-        air is the AI Respository.
+        air is the AI Repository.
         replyToChannelId may be an avatarId, an accountId, or a channelId.
         timeoutTime is how many seconds to wait before aborting the request.
         numRetries is the number of times to retry the request before giving up.

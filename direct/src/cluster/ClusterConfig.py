@@ -4,7 +4,7 @@ from .ClusterClient import *
 #: A dictionary of information for various cluster configurations.
 #: Dictionary is keyed on cluster-config string
 #: Each dictionary contains a list of display configurations, one for
-#: each display in the cluster
+#: each display in the cluster.
 #:
 #: Information that can be specified for each display:
 #:
@@ -17,10 +17,10 @@ from .ClusterClient import *
 #: - film offset: offset of film back (in inches)
 #:
 #: Note: this overrides offsets specified in DirectCamConfig.py
-#: For now we only specify frustum for first display region of configuration
+#: For now we only specify frustum for first display region of configuration.
 #:
 #: TODO: Need to handle multiple display regions per cluster node and to
-#: generalize to non cluster situations
+#: generalize to non cluster situations.
 ClientConfigs = {
     'single-server':       [{'display name': 'display0',
                               'display mode': 'client',

@@ -24,7 +24,7 @@ CLUSTER_EXIT                  = 100
 
 #Port number for cluster rendering
 # DAEMON PORT IS PORT USED FOR STARTUP MESSAGE EXCHANGE
-# CAN BE OVERRIDEN WITH cluster-daemon-client-port for client
+# CAN BE OVERRIDDEN WITH cluster-daemon-client-port for client
 # and cluster-daemon-server-port for server
 CLUSTER_DAEMON_PORT = 8001
 # THIS IS THE TCP PORT USED FOR EXCHANGE OF DATA ONCE STARTUP IS COMPLETE

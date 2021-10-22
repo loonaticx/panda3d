@@ -8,7 +8,7 @@ from . import LargeBlobSenderConsts
 
 class DistributedLargeBlobSender(DistributedObject.DistributedObject):
     """DistributedLargeBlobSender: for sending large chunks of data through
-    the DC system"""
+    the DC system."""
     notify = DirectNotifyGlobal.directNotify.newCategory('DistributedLargeBlobSender')
 
     def __init__(self, cr):
@@ -67,7 +67,7 @@ class DistributedLargeBlobSender(DistributedObject.DistributedObject):
         self.privOnBlobComplete()
 
     def isComplete(self):
-        """ returns non-zero if we've got the full blob """
+        """ Returns non-zero if we've got the full blob. """
         return self.complete
 
     def setDoneEvent(self, event):
@@ -81,7 +81,7 @@ class DistributedLargeBlobSender(DistributedObject.DistributedObject):
             messenger.send(self.doneEvent, [self.blob])
 
     def getBlob(self):
-        """ returns the full blob """
+        """ Returns the full blob. """
         assert self.isComplete()
         return self.blob
 

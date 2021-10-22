@@ -52,7 +52,7 @@ class DirectButton(DirectFrame):
         # Initialize superclasses
         DirectFrame.__init__(self, parent)
 
-        # If specifed, add scaling to the pressed state to make it
+        # If specified, add scaling to the pressed state to make it
         # look like the button is moving when you press it.  We have
         # to set up the node first, before we call initialise options;
         # but we can't actually apply the scale until we have the
