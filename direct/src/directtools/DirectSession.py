@@ -905,7 +905,7 @@ class DirectSession(DirectObject):
         self.selected.removeAll()
 
     def showAllDescendants(self, nodePath = None):
-        """ Show the level and its descendants """
+        """ Show the level and its descendants. """
         if nodePath is None:
             nodePath = base.render
 
@@ -940,7 +940,7 @@ class DirectSession(DirectObject):
                     self.flash(np)
 
     def getAndSetName(self, nodePath):
-        """ Prompt user for new node path name """
+        """ Prompt user for a new NodePath name. """
         from tkinter.simpledialog import askstring
         newName = askstring('Node Path: ' + nodePath.getName(),
                             'Enter new name:')

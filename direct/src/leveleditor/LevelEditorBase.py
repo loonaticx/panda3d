@@ -46,7 +46,7 @@ class LevelEditorBase(DirectObject):
 
     def initialize(self):
         """ You should call this in your __init__ method of inherited LevelEditor class """
-        # specifiy what obj can be 'selected' as objects
+        # specify what obj can be 'selected' as objects
         base.direct.selected.addTag('OBJRoot')
 
         self.actionEvents.extend([

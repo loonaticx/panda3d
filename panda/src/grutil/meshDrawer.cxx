@@ -83,7 +83,7 @@ void MeshDrawer::generator(int budget) {
 
 /**
  * Pass the current camera node and the root node.  Passing the camera is
- * required to generate bill boards that face it.
+ * required to generate billboards that face it.
  */
 void MeshDrawer::begin(NodePath camera, NodePath render) {
   // sanity check
@@ -119,7 +119,7 @@ void MeshDrawer::begin(NodePath camera, NodePath render) {
   _color = new GeomVertexRewriter(_vdata, "color");
   _dprim = _prim->decompose();
 
-  // reseta our clearning indexes
+  // reset our clearing indexes
   _start_clear_index = 0;
   _end_clear_index = _budget;
   _clear_index = _start_clear_index;
@@ -149,7 +149,7 @@ void MeshDrawer::end() {
 }
 
 /**
- * Draws a particle that is sort of like a bill board but has an extra
+ * Draws a particle that is sort of like a billboard but has an extra
  * rotation component.  Frame contains u,v,u-size,v-size quadruple.
  */
 void MeshDrawer::particle(const LVector3 &pos, const LVector4 &frame, PN_stdfloat size,
@@ -233,7 +233,7 @@ void MeshDrawer::segment(const LVector3 &start, const LVector3 &stop, const LVec
 }
 /**
  * Draws a segment a line with a thickness.  This segment does not use the
- * bill boarding behavior and instead draws 2 planes in a cross.  Stars at
+ * billboarding behavior and instead draws 2 planes in a cross.  Begins at
  * start and ends at stop.  Frame contains u,v,u-size,v-size quadruple.
  */
 void MeshDrawer::cross_segment(const LVector3 &start, const LVector3 &stop, const LVector4 &frame,
@@ -275,7 +275,7 @@ void MeshDrawer::cross_segment(const LVector3 &start, const LVector3 &stop, cons
 
 /**
  * Draws a segment a line with different thickness and color on both sides.
- * Stars at start and ends at stop.  Frame contains u,v,u-size,v-size
+ * Begins at start and ends at stop.  Frame contains u,v,u-size,v-size
  * quadruple.
  */
 void MeshDrawer::uneven_segment(const LVector3 &start, const LVector3 &stop,
@@ -313,7 +313,7 @@ void MeshDrawer::uneven_segment(const LVector3 &start, const LVector3 &stop,
 }
 
 /**
- * Draws number of particles in a sphere like emitter.  Frame contains
+ * Draws number of particles in a sphere-like emitter.  Frame contains
  * u,v,u-size,v-size quadruple.
  */
 void MeshDrawer::explosion(
@@ -350,10 +350,10 @@ void MeshDrawer::stream(const LVector3 &start, const LVector3 &stop, const LVect
 
 
 /**
- * Draws the geometry that is inside this node path into the MeshDrawer
+ * Draws the geometry that is inside this NodePath into the MeshDrawer
  * object.  This performs a similar functions as RigidBodyCombiner but for
- * very dynamic situations that share the same texture like physcal chunks of
- * explosions.  It can be a little slow
+ * very dynamic situations that share the same texture like physical chunks of
+ * explosions.
  */
 void MeshDrawer::geometry(NodePath draw_node) {
   assert(_render.get_error_type() == NodePath::ET_ok);

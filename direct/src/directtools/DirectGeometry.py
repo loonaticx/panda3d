@@ -14,8 +14,8 @@ class LineNodePath(NodePath):
         if parent is None:
             parent = hidden
 
-        # Attach a geomNode to the parent and set self to be
-        # the resulting node path
+        # Attach a GeomNode to the parent and set self to be
+        # the resulting NodePath
         self.lineNode = GeomNode("lineNode")
         self.assign(parent.attachNewNode(self.lineNode))
         if name:

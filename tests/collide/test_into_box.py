@@ -80,7 +80,7 @@ def test_parabola_into_box():
     entry = make_collision(parabola, box)[0]
     assert entry is None
 
-    # Parabola is outside the Box and colliding on its projecticle
+    # Parabola is outside the Box and colliding on its projectile
     parabola.set_parabola(
             LParabola((-2, -2, -2), (1, 1, 1), (4, 4, 4)))
     # Parabola collides with Box when t == 1 at point (3, 3, 3)
