@@ -107,7 +107,7 @@ PUBLISHED:
 /**
  * Call connect_to from client for each server.  returns the port number of
  * the connection (which is different from the rendezvous port used in the
- * second argument).  The return value can be used for the port arguemnt in
+ * second argument).  The return value can be used for the port argument in
  * disconnect_from().
  */
   int connect_to(const std::string& server_host, int port);

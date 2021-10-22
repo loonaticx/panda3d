@@ -401,7 +401,7 @@ class ConnectionRepository(
     def importModule(self, dcImports, moduleName, importSymbols):
         """
         Imports the indicated moduleName and all of its symbols
-        into the current namespace.  This more-or-less reimplements
+        into the current namespace.  This more-or-less re-implements
         the Python import command.
         """
         module = __import__(moduleName, globals(), locals(), importSymbols)

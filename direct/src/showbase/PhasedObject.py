@@ -139,7 +139,7 @@ if __debug__:
         alias mapping for PhasedObjects.
 
         As the distance between an observer and this object closes,
-        we would set the phase level succesively higher, with an initial
+        we would set the phase level successively higher, with an initial
         phase of 'Away' being set in __init__:
 
         setPhase('Far') -> invokes loadPhaseFar()

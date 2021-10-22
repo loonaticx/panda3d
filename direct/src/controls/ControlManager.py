@@ -278,16 +278,13 @@ class ControlManager:
         self.currentControls = None
 
     def disableAvatarJump(self):
-        """
-        prevent
-        """
         assert self.forceAvJumpToken is None
         self.forceAvJumpToken=inputState.force(
             "jump", 0, 'ControlManager.disableAvatarJump')
 
     def enableAvatarJump(self):
         """
-        Stop forcing the ctrl key to return 0's
+        Stop forcing the ctrl key to return 0's.
         """
         assert self.forceAvJumpToken is not None
         self.forceAvJumpToken.release()

@@ -14,7 +14,7 @@ class ParentMgr:
 
     The functionality of ParentMgr used to be implemented with a simple
     token->node dictionary. As distributed 'parent' objects were manifested,
-    they would add themselves to the dictionary. Problems occured when
+    they would add themselves to the dictionary. Problems occurred when
     distributed avatars were manifested before the objects to which they
     were parented to.
 
@@ -46,8 +46,8 @@ class ParentMgr:
         del self.pendingChild2parentToken
 
     def privRemoveReparentRequest(self, child):
-        """ this internal function removes any currently-pending reparent
-        request for the given child nodepath """
+        """ This internal function removes any currently-pending reparent
+        request for the given child NodePath."""
         if child in self.pendingChild2parentToken:
             self.notify.debug("Cancelling pending reparent of %s to '%s'" %
                               (repr(child),

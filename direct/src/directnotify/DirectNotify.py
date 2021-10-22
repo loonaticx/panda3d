@@ -13,7 +13,7 @@ class DirectNotify:
 
     def __init__(self):
         """
-        DirectNotify class keeps a dictionary of Notifiers
+        DirectNotify class keeps a dictionary of Notifiers.
         """
         self.__categories = { }
         # create a default log file
@@ -26,27 +26,27 @@ class DirectNotify:
 
     def __str__(self):
         """
-        Print handling routine
+        Print handling routine.
         """
         return "DirectNotify categories: %s" % (self.__categories)
 
     #getters and setters
     def getCategories(self):
         """
-        Return list of category dictionary keys
+        Return list of category dictionary keys.
         """
         return list(self.__categories.keys())
 
     def getCategory(self, categoryName):
         """getCategory(self, string)
-        Return the category with given name if present, None otherwise
+        Return the category with given name if present, None otherwise.
         """
         return self.__categories.get(categoryName, None)
 
     def newCategory(self, categoryName, logger=None):
         """newCategory(self, string)
         Make a new notify category named categoryName. Return new category
-        if no such category exists, else return existing category
+        if no such category exists, else return existing category.
         """
         if categoryName not in self.__categories:
             self.__categories[categoryName] = Notifier.Notifier(categoryName, logger)

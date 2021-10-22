@@ -18,7 +18,7 @@ class FourStateAI:
     is a DistributedObjectAI.
 
     Inherit from FourStateFSM and pass in your states.  Two of
-    the states should be oposites of each other and the other
+    the states should be opposites of each other and the other
     two should be the transition states between the first two.
     E.g::
 
@@ -87,8 +87,8 @@ class FourStateAI:
         Each states also has an associated on or off value.  The only
         state that is 'on' is state 4.  So, the transition states
         between off and on (states 1 and 3) are also considered
-        off (and so is state 2 which is oposite of state 4 and therefore
-        oposite of 'on').
+        off (and so is state 2 which is opposite of state 4 and therefore
+        opposite of 'on').
         """
         self.stateIndex = 0
         assert self.__debugPrint(
@@ -187,7 +187,7 @@ class FourStateAI:
 
     def distributeStateChange(self):
         """
-        This function is intentionaly simple so that derived classes
+        This function is intentionally simple so that derived classes
         may easily alter the network message.
         """
         assert self.__debugPrint("distributeStateChange()")

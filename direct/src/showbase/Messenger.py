@@ -255,7 +255,7 @@ class Messenger:
             self.lock.release()
 
     def isAccepting(self, event, object):
-        """ isAccepting(self, string, DirectOject)
+        """ isAccepting(self, string, DirectObject)
         Is this object accepting this event?
         """
         self.lock.acquire()
@@ -278,7 +278,7 @@ class Messenger:
         return self.__callbacks.get(event)
 
     def isIgnoring(self, event, object):
-        """ isIgnorning(self, string, DirectObject)
+        """ isIgnoring(self, string, DirectObject)
         Is this object ignoring this event?
         """
         return not self.isAccepting(event, object)
@@ -482,8 +482,6 @@ class Messenger:
         def watch(self, needle):
             """
             return a matching event (needle) if found (in haystack).
-            This is primarily a debugging tool.
-
             This is intended for debugging use only.
             This function is not defined if python is ran with -O (optimize).
 
@@ -496,8 +494,6 @@ class Messenger:
         def unwatch(self, needle):
             """
             return a matching event (needle) if found (in haystack).
-            This is primarily a debugging tool.
-
             This is intended for debugging use only.
             This function is not defined if python is ran with -O (optimize).
 
@@ -511,8 +507,6 @@ class Messenger:
             """
             When verbose mode is on, don't spam the output with messages
             marked as quiet.
-            This is primarily a debugging tool.
-
             This is intended for debugging use only.
             This function is not defined if python is ran with -O (optimize).
 
@@ -525,8 +519,6 @@ class Messenger:
             """
             Remove a message from the list of messages that are not reported
             in verbose mode.
-            This is primarily a debugging tool.
-
             This is intended for debugging use only.
             This function is not defined if python is ran with -O (optimize).
 
@@ -582,7 +574,7 @@ class Messenger:
 
     def __eventRepr(self, event):
         """
-        Compact version of event, acceptor pairs
+        Compact version of event, acceptor pairs.
         """
         str = event.ljust(32) + '\t'
         acceptorDict = self.__callbacks[event]
@@ -593,7 +585,7 @@ class Messenger:
 
     def __repr__(self):
         """
-        Compact version of event, acceptor pairs
+        Compact version of event, acceptor pairs.
         """
         str = "The messenger is currently handling:\n" + "="*64 + "\n"
         keys = list(self.__callbacks.keys())
@@ -613,7 +605,7 @@ class Messenger:
 
     def detailedRepr(self):
         """
-        Print out the table in a detailed readable format
+        Print out the table in a detailed readable format.
         """
         str = 'Messenger\n'
         str = str + '='*50 + '\n'

@@ -230,7 +230,7 @@ class FunctionCall(ReceivesMultipleStateChanges, PushesStateChanges):
         del self._bakedKargs
 
     def getState(self):
-        # for any state recievers that are hooked up to us, they get a tuple
+        # for any state receivers that are hooked up to us, they get a tuple
         # of (tuple(positional argument values), dict(keyword argument name->value))
         return (tuple(self._bakedArgs), dict(self._bakedKargs))
 

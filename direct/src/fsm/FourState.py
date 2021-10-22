@@ -16,7 +16,7 @@ class FourState:
     is a DistributedObject.
 
     Inherit from FourStateFSM and pass in your states.  Two of
-    the states should be oposites of each other and the other
+    the states should be opposites of each other and the other
     two should be the transition states between the first two.
     E.g::
 
@@ -82,8 +82,8 @@ class FourState:
         Each states also has an associated on or off value.  The only
         state that is 'on' is state 4.  So, the transition states
         between off and on (states 1 and 3) are also considered
-        off (and so is state 2 which is oposite of 4 and therefore
-        oposite of 'on').
+        off (and so is state 2 which is opposite of 4 and therefore
+        opposite of 'on').
         """
         self.stateIndex = 0
         assert self.__debugPrint("FourState(names=%s)"%(names))

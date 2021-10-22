@@ -291,7 +291,7 @@ class FilterManager(DirectObject):
 
         # This clear stage is important if the buffer is padded, so that
         # any pixels accidentally sampled in the padded region won't
-        # be reading from unititialised memory.
+        # be reading from uninitialized memory.
         buffer.setClearColor((0, 0, 0, 1))
         buffer.setClearColorActive(True)
 

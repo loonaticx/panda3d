@@ -262,7 +262,7 @@ class AsyncRequest(DirectObject):
 
 def cleanupAsyncRequests():
     """
-    Only call this when the application is shuting down.
+    Only call this when the application is shutting down.
     """
     for asyncRequest in AsyncRequest._asyncRequests:
         asyncRequest.delete()

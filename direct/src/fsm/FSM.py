@@ -466,7 +466,7 @@ class FSM(DirectObject):
         return self.defaultFilter(request, args)
 
     def setStateArray(self, stateArray):
-        """array of unique states to iterate through"""
+        """Array of unique states to iterate through."""
         self.fsmLock.acquire()
         try:
             self.stateArray = stateArray
@@ -609,7 +609,7 @@ class FSM(DirectObject):
 
     def __str__(self):
         """
-        Print out something useful about the fsm
+        Prints out the state information about the FSM.
         """
         self.fsmLock.acquire()
         try:

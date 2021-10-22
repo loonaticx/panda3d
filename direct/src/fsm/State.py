@@ -80,14 +80,14 @@ class State(DirectObject):
         self.__exitFunc = stateExitFunc
 
     def transitionsToAny(self):
-        """ returns true if State defines transitions to any other state """
+        """ returns true if State defines transitions to any other state. """
         return self.__transitions is State.Any
 
     def getTransitions(self):
         """
-        warning -- if the state transitions to any other state,
+        Warning -- if the state transitions to any other state,
         returns an empty list (falsely implying that the state
-        has no transitions)
+        has no transitions).
         see State.transitionsToAny()
         """
         if self.transitionsToAny():
@@ -129,38 +129,38 @@ class State(DirectObject):
 
     def getChildren(self):
         """
-        Return the list of child FSMs
+        Return the list of child FSMs.
         """
         return self.__FSMList
 
     def setChildren(self, FSMList):
         """setChildren(self, ClassicFSM[])
-        Set the children to given list of FSMs
+        Set the children to given list of FSMs.
         """
         self.__FSMList = FSMList
 
     def addChild(self, ClassicFSM):
         """
-        Add the given ClassicFSM to list of child FSMs
+        Add the given ClassicFSM to list of child FSMs.
         """
         self.__FSMList.append(ClassicFSM)
 
     def removeChild(self, ClassicFSM):
         """
-        Remove the given ClassicFSM from list of child FSMs
+        Remove the given ClassicFSM from list of child FSMs.
         """
         if ClassicFSM in self.__FSMList:
             self.__FSMList.remove(ClassicFSM)
 
     def hasChildren(self):
         """
-        Return true if state has child FSMs
+        Return true if state has child FSMs.
         """
         return len(self.__FSMList) > 0
 
     def __enterChildren(self, argList):
         """
-        Enter all child FSMs
+        Enter all child FSMs.
         """
         for fsm in self.__FSMList:
             # Check to see if the child fsm is already in a state
@@ -168,7 +168,7 @@ class State(DirectObject):
 
             if fsm.getCurrentState():
                 # made this 'conditional_request()' instead of 'request()' to avoid warning when
-                # loading minigames where rules->frameworkInit transition doesnt exist and you
+                # loading minigames where rules->frameworkInit transition doesn't exist and you
                 # don't want to add it since it results in hanging the game
                 fsm.conditional_request((fsm.getInitialState()).getName())
 

@@ -64,7 +64,7 @@ class Notifier:
     def getTime(self):
         """
         Return the time as a string suitable for printing at the
-        head of any notify message
+        head of any notify message.
         """
         # for some strange reason, time.time() updates only once/minute if
         # the task is out of focus on win32.  time.clock doesn't have this problem.
@@ -79,7 +79,7 @@ class Notifier:
 
     def __str__(self):
         """
-        Print handling routine
+        Print handling routine.
         """
         return "%s: info = %d, warning = %d, debug = %d, logging = %d" % \
                (self.__name, self.__info, self.__warning, self.__debug, self.__logging)
@@ -132,7 +132,7 @@ class Notifier:
     # warning funcs
     def warning(self, warningString):
         """
-        Issue the warning message if warn flag is on
+        Issue the warning message if warn flag is on.
         """
         if self.__warning:
             message = str(warningString)
@@ -146,20 +146,20 @@ class Notifier:
 
     def setWarning(self, enable):
         """
-        Enable/Disable the printing of warning messages
+        Enable/Disable the printing of warning messages.
         """
         self.__warning = enable
 
     def getWarning(self):
         """
-        Return whether the printing of warning messages is on or off
+        Return whether the printing of warning messages is on or off.
         """
         return self.__warning
 
     # debug funcs
     def debug(self, debugString):
         """
-        Issue the debug message if debug flag is on
+        Issue the debug message if debug flag is on.
         """
         if self.__debug:
             message = str(debugString)
@@ -173,20 +173,20 @@ class Notifier:
 
     def setDebug(self, enable):
         """
-        Enable/Disable the printing of debug messages
+        Enable/Disable the printing of debug messages.
         """
         self.__debug = enable
 
     def getDebug(self):
         """
-        Return whether the printing of debug messages is on or off
+        Return whether the printing of debug messages is on or off.
         """
         return self.__debug
 
     # info funcs
     def info(self, infoString):
         """
-        Print the given informational string, if info flag is on
+        Print the given informational string, if info flag is on.
         """
         if self.__info:
             message = str(infoString)
@@ -200,33 +200,33 @@ class Notifier:
 
     def getInfo(self):
         """
-        Return whether the printing of info messages is on or off
+        Return whether the printing of info messages is on or off.
         """
         return self.__info
 
     def setInfo(self, enable):
         """
-        Enable/Disable informational message  printing
+        Enable/Disable informational message printing.
         """
         self.__info = enable
 
     # log funcs
     def __log(self, logEntry):
         """
-        Determine whether to send informational message to the logger
+        Determine whether to send informational message to the logger.
         """
         if self.__logging:
             self.__logger.log(logEntry)
 
     def getLogging(self):
         """
-        Return 1 if logging enabled, 0 otherwise
+        Return 1 if logging enabled, 0 otherwise.
         """
         return self.__logging
 
     def setLogging(self, enable):
         """
-        Set the logging flag to int (1=on, 0=off)
+        Set the logging flag to int (1=on, 0=off).
         """
         self.__logging = enable
 

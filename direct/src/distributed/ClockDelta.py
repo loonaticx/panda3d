@@ -92,9 +92,9 @@ class ClockDelta(DirectObject.DirectObject):
 
     def __resetClock(self, timeDelta):
         """
-        this is called when the global clock gets adjusted
+        This is called when the global clock gets adjusted.
         timeDelta is equal to the amount of time, in seconds,
-        that has been added to the global clock
+        that has been added to the global clock.
         """
         assert self.notify.debug(
             "Adjusting timebase by %f seconds." % timeDelta)

@@ -56,13 +56,13 @@ class ClassicFSM(DirectObject):
               'red',
               'red')
 
-        each state's last argument, a list of allowed state transitions,
+        Each state's last argument, a list of allowed state transitions,
         is optional; if left out (or explicitly specified to be
         State.State.Any) then any transition from the state is 'defined'
-        and allowed
+        and allowed.
 
         'onUndefTransition' flag determines behavior when undefined
-        transition is requested; see flag definitions above
+        transition is requested; see flag definitions above.
         """
         self.setName(name)
         self.setStates(states)
@@ -93,7 +93,7 @@ class ClassicFSM(DirectObject):
 
     def __str__(self):
         """
-        Print out something useful about the fsm
+        Prints out the state information about the ClassicFSM.
         """
         currentState = self.getCurrentState()
         if currentState:
@@ -157,7 +157,7 @@ class ClassicFSM(DirectObject):
 
     def getStateNamed(self, stateName):
         """
-        Return the state with given name if found, issue warning otherwise
+        Return the state with given name if found, issue warning otherwise.
         """
         state = self.__states.get(stateName)
         if state:
@@ -180,7 +180,7 @@ class ClassicFSM(DirectObject):
 
     def __exitCurrent(self, argList):
         """
-        Exit the current state
+        Exits the current state.
         """
         assert self.__internalStateInFlux
         assert ClassicFSM.notify.debug("[%s]: exiting %s" % (self.__name, self.__currentState.getName()))
