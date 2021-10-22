@@ -83,7 +83,7 @@ get_properties_callback() const {
  * buffers.
  *
  * This callback will actually serve several different functions.  It
- * receivces a RenderCallbackData, and you can query data->get_callback_type()
+ * receives a RenderCallbackData, and you can query data->get_callback_type()
  * to return the actual function of each particular callback.
  */
 INLINE void CallbackGraphicsWindow::

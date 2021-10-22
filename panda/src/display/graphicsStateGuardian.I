@@ -918,7 +918,7 @@ get_inv_cs_transform() const {
 
 /**
  * Notifies the gsg that it is about to render into a window/buffer with the
- * given FrameBufferProperties
+ * given FrameBufferProperties.
  */
 INLINE void GraphicsStateGuardian::
 set_current_properties(const FrameBufferProperties *prop) {

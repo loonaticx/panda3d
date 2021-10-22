@@ -23,7 +23,7 @@ GraphicsWindowProc(){
 #if defined(__WIN32__) || defined(_WIN32)
 
 /**
- * A WIN32-specific method that is called when a Window proc event occurrs.
+ * A WIN32-specific method that is called when a Window proc event occurs.
  * Should be overridden by a derived class.
  */
 LONG GraphicsWindowProc::

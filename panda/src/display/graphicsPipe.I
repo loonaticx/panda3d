@@ -75,7 +75,7 @@ get_display_height() const {
 }
 
 /**
- * Returns a pointer to device object
+ * Returns a pointer to device object.
  */
 INLINE GraphicsDevice *GraphicsPipe::
 get_device() const {

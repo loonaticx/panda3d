@@ -50,7 +50,7 @@ get_auto_flip() const {
 
 /**
  * Set this flag true to indicate the GraphicsEngine should start portal
- * culling
+ * culling.
  */
 INLINE void GraphicsEngine::
 set_portal_cull(bool value) {

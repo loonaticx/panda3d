@@ -30,7 +30,7 @@ get_graphics_window() const {
 #ifdef _WIN32
 
 /**
- * Returns the Windows proc hwnd parameter.
+ * Returns the Windows proc HWND parameter.
  */
 INLINE uintptr_t GraphicsWindowProcCallbackData::
 get_hwnd() const {
@@ -62,7 +62,7 @@ get_lparam() const {
 }
 
 /**
- * Sets the Windows proc hwnd parameter.
+ * Sets the Windows proc HWND parameter.
  */
 INLINE void GraphicsWindowProcCallbackData::
 set_hwnd(uintptr_t hwnd) {

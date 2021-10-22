@@ -277,7 +277,7 @@ make_output(GraphicsPipe *pipe,
  * pipe::make_output to try again, this time using a different set of OpenGL
  * extensions or DirectX capabilities.   This is what the "retry" parameter to
  * pipe::make_output is for - it specifies, in an abstract manner, which set
- * of capabiltiesextensions to try.  The only problem with this design is that
+ * of capabilites/extensions to try.  The only problem with this design is that
  * it requires the engine to call open_windows, which is slow.  To make things
  * faster, the pipe can choose to "precertify" its creations.  If it chooses
  * to do so, this is a guarantee that the windows it returns will not fail in
