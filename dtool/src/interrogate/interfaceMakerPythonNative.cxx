@@ -1180,7 +1180,7 @@ write_class_details(ostream &out, Object *obj) {
     out << "static void *Dtool_UpcastInterface_" << ClassName << "(PyObject *self, Dtool_PyTypedObject *requested_type) {\n";
     out << "  Dtool_PyTypedObject *type = DtoolInstance_TYPE(self);\n";
     out << "  if (type != &Dtool_" << ClassName << ") {\n";
-    out << "    printf(\"" << ClassName << " ** Bad Source Type-- Requesting Conversion from %s to %s\\n\", Py_TYPE(self)->tp_name, requested_type->_PyType.tp_name); fflush(nullptr);\n";;
+    out << "    printf(\"%s ** Bad Source Type-- Requesting Conversion from %s to %s\\n\", \"" << ClassName << "\", Py_TYPE(self)->tp_name, requested_type->_PyType.tp_name); fflush(nullptr);\n";
     out << "    return nullptr;\n";
     out << "  }\n";
     out << "\n";
@@ -1706,7 +1706,11 @@ write_module_class(ostream &out, Object *obj) {
     }
 
     if (!func->_has_this) {
-      flags += " | METH_STATIC";
+      if (func->_flags & FunctionRemap::F_explicit_cls) {
+        flags += " | METH_CLASS";
+      } else {
+        flags += " | METH_STATIC";
+      }
 
       // Skip adding this entry if we also have a property with the same name.
       // In that case, we will use a Dtool_StaticProperty to disambiguate
@@ -2160,7 +2164,11 @@ write_module_class(ostream &out, Object *obj) {
           // assume the bounds are 0 .. this->size() (this is the same
           // assumption that Python makes).
           out << "  if (index < 0 || index >= (Py_ssize_t) local_this->size()) {\n";
+          out << "#ifdef NDEBUG\n";
+          out << "    PyErr_SetString(PyExc_IndexError, \"index out of range\");\n";
+          out << "#else\n";
           out << "    PyErr_SetString(PyExc_IndexError, \"" << ClassName << " index out of range\");\n";
+          out << "#endif\n";
           out << "    return nullptr;\n";
           out << "  }\n";
 
@@ -2192,7 +2200,11 @@ write_module_class(ostream &out, Object *obj) {
           out << "  }\n\n";
 
           out << "  if (index < 0 || index >= (Py_ssize_t) local_this->size()) {\n";
+          out << "#ifdef NDEBUG\n";
+          out << "    PyErr_SetString(PyExc_IndexError, \"index out of range\");\n";
+          out << "#else\n";
           out << "    PyErr_SetString(PyExc_IndexError, \"" << ClassName << " index out of range\");\n";
+          out << "#endif\n";
           out << "    return -1;\n";
           out << "  }\n";
 
@@ -3492,7 +3504,7 @@ write_module_class(ostream &out, Object *obj) {
   }
 
   out << "    if (PyType_Ready((PyTypeObject *)&Dtool_" << ClassName << ") < 0) {\n"
-         "      Dtool_Raise_TypeError(\"PyType_Ready(" << ClassName << ")\");\n"
+         "      PyErr_Format(PyExc_TypeError, \"PyType_Ready(%s)\", \"" << ClassName << "\");\n"
          "      return;\n"
          "    }\n"
          "    Py_INCREF((PyTypeObject *)&Dtool_" << ClassName << ");\n"
@@ -3643,6 +3655,9 @@ write_function_for_top(ostream &out, InterfaceMaker::Object *obj, InterfaceMaker
   // This will be NULL for static funcs, so prevent code from using it.
   if (func->_has_this) {
     prototype += "self";
+  }
+  else if (func->_flags & FunctionRemap::F_explicit_cls) {
+    prototype += "cls";
   }
 
   switch (func->_args_type) {
@@ -6853,7 +6868,11 @@ write_getset(ostream &out, Object *obj, Property *property) {
     // IndexError if we're out of bounds.
     out << "  if (index < 0 || index >= (Py_ssize_t)"
         << len_remap->get_call_str("local_this", pexprs) << ") {\n";
+    out << "#ifdef NDEBUG\n";
+    out << "    PyErr_SetString(PyExc_IndexError, \"index out of range\");\n";
+    out << "#else\n";
     out << "    PyErr_SetString(PyExc_IndexError, \"" << ClassName << "." << ielem.get_name() << "[] index out of range\");\n";
+    out << "#endif\n";
     out << "    return nullptr;\n";
     out << "  }\n";
 
@@ -6900,7 +6919,11 @@ write_getset(ostream &out, Object *obj, Property *property) {
 
       out << "  if (index < 0 || index >= (Py_ssize_t)"
           << len_remap->get_call_str("local_this", pexprs) << ") {\n";
+      out << "#ifdef NDEBUG\n";
+      out << "    PyErr_SetString(PyExc_IndexError, \"index out of range\");\n";
+      out << "#else\n";
       out << "    PyErr_SetString(PyExc_IndexError, \"" << ClassName << "." << ielem.get_name() << "[] index out of range\");\n";
+      out << "#endif\n";
       out << "    return -1;\n";
       out << "  }\n";
 
@@ -6913,7 +6936,11 @@ write_getset(ostream &out, Object *obj, Property *property) {
         }
         out << "    return 0;\n";
       } else {
-        out << "    Dtool_Raise_TypeError(\"can't delete " << ielem.get_name() << "[] attribute\");\n"
+        out << "#ifdef NDEBUG\n"
+               "    Dtool_Raise_TypeError(\"can't delete attribute\");\n"
+               "#else\n"
+               "    Dtool_Raise_TypeError(\"can't delete " << ielem.get_name() << "[] attribute\");\n"
+               "#endif\n"
                "    return -1;\n";
       }
       out << "  }\n";
@@ -7094,7 +7121,11 @@ write_getset(ostream &out, Object *obj, Property *property) {
                               RF_int, false, false);
         out << "    return -1;\n";
       } else {
-        out << "    Dtool_Raise_TypeError(\"can't delete " << ielem.get_name() << "[] attribute\");\n"
+        out << "#ifdef NDEBUG\n"
+               "    Dtool_Raise_TypeError(\"can't delete attribute\");\n"
+               "#else\n"
+               "    Dtool_Raise_TypeError(\"can't delete " << ielem.get_name() << "[] attribute\");\n"
+               "#endif\n"
                "    return -1;\n";
       }
       out << "  }\n";
@@ -7151,7 +7182,11 @@ write_getset(ostream &out, Object *obj, Property *property) {
       if (len_remap != nullptr) {
         out << "  if (index < 0 || index >= (Py_ssize_t)"
             << len_remap->get_call_str("local_this", pexprs) << ") {\n";
+        out << "#ifdef NDEBUG\n";
+        out << "    PyErr_SetString(PyExc_IndexError, \"index out of range\");\n";
+        out << "#else\n";
         out << "    PyErr_SetString(PyExc_IndexError, \"" << ClassName << "." << ielem.get_name() << "[] index out of range\");\n";
+        out << "#endif\n";
         out << "    return nullptr;\n";
         out << "  }\n";
       }
@@ -7337,8 +7372,12 @@ write_getset(ostream &out, Object *obj, Property *property) {
         out << "    " << cClassName << "::" << property->_deleter->_ifunc.get_name() << "();\n"
             << "    return 0;\n";
       } else {
-        out << "    Dtool_Raise_TypeError(\"can't delete " << ielem.get_name() << " attribute\");\n"
-                "    return -1;\n";
+        out << "#ifdef NDEBUG\n"
+               "    Dtool_Raise_TypeError(\"can't delete attribute\");\n"
+               "#else\n"
+               "    Dtool_Raise_TypeError(\"can't delete " << ielem.get_name() << " attribute\");\n"
+               "#endif\n"
+               "    return -1;\n";
       }
       out << "  }\n";
 
