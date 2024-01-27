@@ -1130,7 +1130,8 @@ class TexRecord:
         self.size = size
         x = self.tex.getXSize()
         y = self.tex.getYSize()
-        r = float(y) / float(x)
+        # Ensure y & x are at least 1px to avoid a divide by 0 error
+        r = float(max(y, 1)) / float(max(x, 1))
 
         # Card size, in unscaled texel units.
         self.tw = math.sqrt(self.size) / math.sqrt(r)
